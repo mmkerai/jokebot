@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jokebot Super Admin</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+	<link href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css" rel="stylesheet">
+	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script> 
+<!--	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+	<link rel="stylesheet" href="bootstrap.min.css"/>
+	<link rel="stylesheet" href="bootstrap-table.min.css"/>
+	<script type="text/javascript" src="bootstrap-table.min.js"></script>-->
+	<script src="socket.io/socket.io.js"></script>
+	<script src="jbutils.js"></script>
+	<script src="jsadmin.js"></script>
+</head>
+<body>
+	<div class="container theme-showcase" role="main">
+		<div class="well">
+			<h3>Jokebot Super Admin</h3>
+			<h4>Super admin for Jokebot</h4>
+			<h5><span id="version" class="pull-left"></span></h5>
+			<span class="pull-right">
+				<button class="btn btn-info" id="userbutton"></button>
+				<button class="btn btn-warning" id="signoutbutton" onclick="signOut()">Sign out</button>
+			</span>
+			<p>&nbsp;</p>
+		</div>
+		<div class="col-xs-12">
+			<div class="col-xs-2">
+				<button class="btn btn-info" id="signinbutton" onclick="signInSuper()">signin</button>
+			</div>
+		</div>
+		<p>&nbsp;</p>
+	<div id="jbadmin">
+		<div class="col-xs-12">
+			<div class="col-xs-2">
+				<button class="btn btn-primary" onclick="createapp()">Create new app id</button>
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-primary" onclick="viewapps()">View app ids</button>
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-primary" onclick="loadjokes()">Load Jokes in DB</button>
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-primary" onclick="reviewjokes()">Review Jokes</button>
+			</div>
+		</div>
+		<p>&nbsp;</p>
+		<form id="reviewj" class="inputform" method="POST">
+		Category<select id="jcat"></select>
+		<button class="btn btn-warning" onClick='getjokes()'>Get Jokes</button>
+		<p>&nbsp;</p>
+		<button class="btn btn-warning" id='select'>Get selection</button>
+		</table>
+		</form>
+		<div id="jtable">
+			<table
+				id="btable"
+				class="table table-striped"
+				data-toggle="btable"
+				data-height="360"
+				data-search="false"
+				data-show-refresh="true"
+				data-filter-control="true"
+				data-method="get"
+				data-pagination="true"
+				data-detail-view="true"
+				data-detail-view-by-click="true"
+				data-detail-view-icon="false"
+				data-click-to-select="true"
+				data-side-pagination="server">
+				<thead class="thead-light">
+				<tr>
+					<th data-field="state" data-checkbox="true"></th>
+					<th data-field="Jid">ID</th>
+					<th data-field="Category" data-sortable="true" data-filter-control="select" data-filter-data="var:filterCategory">Category</th>
+					<th data-field="Joke">Joke</th>
+					<th data-field="Used">Used</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+		<div id="atable">
+			<table
+				id="abtable"
+				class="table table-striped"
+				data-toggle="abtable"
+				data-height="360"
+				data-search="false"
+				data-show-refresh="true"
+				data-filter-control="true"
+				data-method="get"
+				data-pagination="true"
+				data-detail-view="true"
+				data-detail-view-by-click="true"
+				data-detail-view-icon="false"
+				data-click-to-select="true"
+				data-side-pagination="server">
+				<thead class="thead-light">
+				<tr>
+					<th data-field="state" data-checkbox="true"></th>
+					<th data-field="app_id">APP Id</th>
+					<th data-field="api_key">API Key</th>
+					<th data-field="api_requests">Requested</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</div> <!-- jbadmin -->
+	</div> <!-- container main -->
+<p>&nbsp;</p>
+	<p class="text-center" id="error"></p>
+	<p class="text-center" id="message1"></p>
+	<p class="text-center" id="message2"></p>
+</body>
+</html>
