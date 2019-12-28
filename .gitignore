@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 bootstrap.min.css
 tabulator.min.css
 tabulator.min.js
