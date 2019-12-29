@@ -71,7 +71,8 @@ socket.on('SignInSuperResponse',function(jobj) {
 socket.on('getJokesResponse',function(jlist) {
 	$('#jtable').show();
 	$('#atable').hide();
-	$jtable.bootstrapTable({data: jlist});
+//	$jtable.bootstrapTable({data: jlist});
+	$jtable.bootstrapTable('load',{data: jlist});
 });
 
 // Bootstrap table

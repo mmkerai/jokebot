@@ -28,8 +28,8 @@ console.log("Dir path: "+__dirname);
 const SUPERADMIN = "thecodecentre@gmail.com";
 var AUTHUSERS = new Object(); // keep list of authenticated users by their socket ids
 var ActiveTokens = new Object(); // keep list of active tokens by expiry time
-const QFile = "testjokes.json";
-//const QFile = "jokes.json";
+//const QFile = "testjokes.json";
+const QFile = "alljokes.json";
 
 // URL endpoint for authentication
 app.post('/apiv1/authenticate', function(req, res) {
@@ -176,9 +176,9 @@ io.on('connection',function(socket) {
 
   socket.on('getCatsRequest',function() {
     if(AUTHUSERS[socket.id] != JB.jbid) return(autherror(socket));
-    console.log("Getting categories");
+//    console.log("Getting categories");
     dbt.getCategories(function(cats) {
-      console.log("Categories are: "+cats);
+//    console.log("Categories are: "+cats);
   		socket.emit('getCatsResponse',cats);
     });
   });
@@ -193,10 +193,10 @@ io.on('connection',function(socket) {
 
   socket.on('getJokeByIdRequest',function(jid) {
     if(AUTHUSERS[socket.id] != JB.jbid) return(autherror(socket));
-//    console.log("Getting question with ID: "+qid);
-    dbt.getQuestionById(qid,function(question) {
-      //    console.log(question);
-      socket.emit("getQuestionByIdResponse",question);
+//    console.log("Getting joke with ID: "+jid);
+    dbt.getJokeById(jid,function(joke) {
+      //    console.log(joke);
+      socket.emit("getJokesResponse",joke);
     });
  });
 

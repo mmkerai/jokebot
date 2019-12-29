@@ -36,7 +36,7 @@ DB.prototype.viewApps = function(callback) {
 DB.prototype.insertJoke = function(jobj) {
   CollJokes.insertOne(jobj, function(err, res) {
     if (err) throw err;
-    console.log("1 joke inserted:" +res.insertedId);
+//    console.log("1 joke inserted:" +res.insertedId);
   });
 }
 
